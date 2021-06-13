@@ -24,14 +24,14 @@ public class ClientService {
 
     public ClientDTO save(ClientDTO clientDTO) {
 
-        Client client = ClientDTO.ofDto(clientDTO);
+        var client = ClientDTO.ofDto(clientDTO);
         client.setDateCreated(LocalDateTime.now());
 
         return ClientDTO.of(clientRepository.save(client));
     }
 
     public ClientDTO update(ClientDTO clientDTO) {
-        Client client = ClientDTO.ofDto(clientDTO);
+        var client = ClientDTO.ofDto(clientDTO);
         client.setDateUpdated(LocalDateTime.now());
 
         return ClientDTO.of(clientRepository.save(client));
