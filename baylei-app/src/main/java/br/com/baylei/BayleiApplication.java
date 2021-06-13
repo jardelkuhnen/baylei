@@ -6,8 +6,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @SpringBootApplication
 public class BayleiApplication {
 
-	public static void main(String[] args) {
-		SpringApplication.run(BayleiApplication.class, args);
-	}
+    public static void main(String[] args) {
+        SpringApplication.run(BayleiApplication.class, args);
+    }
 
 }
