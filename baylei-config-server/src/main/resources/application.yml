@@ -1,7 +1,10 @@
 
-server.port: 9090
-
+server.port: 8888
 spring.cloud.config.server.git.uri: https://github.com/jardelkuhnen/baylei-configs
-#spring.cloud.config.server.git.uri: file://C:\pessoal\igti\baylei-configs
-spring.cloud.config.server.git.username: jardelkuhnen
-spring.cloud.config.server.git.password: pass
+spring:
+  cloud:
+    config:
+      server:
+        git:
+          username: jardelkuhnen
+          password: passwordHere
