@@ -4,6 +4,8 @@ import br.com.baylei.entity.Client;
 import lombok.Builder;
 import lombok.Data;
 
+import java.time.LocalDateTime;
+
 @Data
 @Builder
 public class ClientDTO {
@@ -14,6 +16,8 @@ public class ClientDTO {
     private Integer age;
     private String phone;
     private String email;
+    private LocalDateTime dateCreated;
+    private LocalDateTime dateUpdated;
 
 
     public static ClientDTO of(Client client) {
@@ -23,7 +27,10 @@ public class ClientDTO {
                 .age(client.getAge())
                 .email(client.getEmail())
                 .phone(client.getPhone())
-                .id(client.getId()).build();
+                .id(client.getId())
+                .dateCreated(client.getDateCreated())
+                .dateUpdated(client.getDateUpdated())
+                .build();
     }
 
     public static Client ofDto(ClientDTO clientDTO) {

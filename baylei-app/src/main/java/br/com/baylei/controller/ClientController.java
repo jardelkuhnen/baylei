@@ -1,10 +1,8 @@
 package br.com.baylei.controller;
 
 import br.com.baylei.dto.ClientDTO;
-import br.com.baylei.entity.Client;
 import br.com.baylei.service.ClientService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
