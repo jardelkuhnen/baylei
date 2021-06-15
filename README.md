@@ -8,7 +8,7 @@
 ## Usage
 
 ```sh
-Use the command 'mvn clean package' to generate de jars.
+Use the command 'mvn clean package' to generate jars.
 
 Use the command 'java -jar appName' to run the apps
 
