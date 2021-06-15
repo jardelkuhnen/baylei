@@ -1,15 +1,16 @@
 package br.com.baylei.controller;
 
-import br.com.baylei.dto.ClientDTO;
 import br.com.baylei.dto.ProductDTO;
 import br.com.baylei.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/product")
+@RequestMapping("/api/products")
 public class ProductController {
 
     @Autowired
@@ -17,23 +18,29 @@ public class ProductController {
 
 
     @PostMapping
-    public ProductDTO save(@RequestBody ProductDTO productDTO) {
-        return productService.save(productDTO);
+    public ResponseEntity<ProductDTO> save(@RequestBody ProductDTO productDTO) {
+        return new ResponseEntity<>(productService.save(productDTO), HttpStatus.CREATED);
     }
 
     @PutMapping
-    public ProductDTO update(@RequestBody ProductDTO productDTO) {
-        return productService.update(productDTO);
+    public ResponseEntity<ProductDTO> update(@RequestBody ProductDTO productDTO) {
+        return new ResponseEntity<>(productService.update(productDTO), HttpStatus.OK);
     }
 
-    @GetMapping("/all")
-    public List<ProductDTO> getAll() {
-        return productService.getAll();
+    @GetMapping
+    public ResponseEntity<List<ProductDTO>> getAll() {
+        return new ResponseEntity<>(productService.getAll(), HttpStatus.OK);
     }
 
     @GetMapping("/{id}")
-    public ProductDTO getById(@PathVariable String id) {
-        return productService.getById(id);
+    public ResponseEntity<ProductDTO> getById(@PathVariable String id) {
+        return new ResponseEntity<>(productService.getById(id), HttpStatus.OK);
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<String> deleteById(@PathVariable String id) {
+        this.productService.deleteById(id);
+        return new ResponseEntity<>(id, HttpStatus.NO_CONTENT);
     }
 
 

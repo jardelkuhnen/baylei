@@ -31,7 +31,16 @@ public class ProductService {
     }
 
     public ProductDTO update(ProductDTO productDTO) {
-        var product = ProductDTO.of(productDTO);
+        var productOptional = this.productRepository.findById(productDTO.getId());
+
+        if(productOptional.isEmpty()) {
+            throw new NotFoundException("Não localizado Produto com id -> " + productDTO.getId());
+        }
+
+        var product = productOptional.get();
+        product.setName(productDTO.getName());
+        product.setPrice(productDTO.getPrice());
+        product.setDescription(productDTO.getDescription());
         product.setDateUpdated(LocalDateTime.now());
 
         return ProductDTO.of(productRepository.save(product));
@@ -48,10 +57,14 @@ public class ProductService {
     public ProductDTO getById(String id) {
         Optional<Product> productOptional = productRepository.findById(id);
 
-        if(!productOptional.isPresent()) {
+        if(productOptional.isEmpty()) {
             throw new NotFoundException("Não localizado produto para id -> " + id);
         }
 
         return ProductDTO.of(productOptional.get());
+    }
+
+    public void deleteById(String id) {
+        this.productRepository.deleteById(id);
     }
 }

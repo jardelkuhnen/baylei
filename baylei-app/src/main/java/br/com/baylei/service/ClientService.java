@@ -31,7 +31,18 @@ public class ClientService {
     }
 
     public ClientDTO update(ClientDTO clientDTO) {
-        var client = ClientDTO.ofDto(clientDTO);
+        var clientOptional = clientRepository.findById(clientDTO.getId());
+
+        if(clientOptional.isEmpty()) {
+            throw new NotFoundException("Não localizado cliente com id -> " + clientDTO.getId());
+        }
+
+        var client = clientOptional.get();
+        client.setName(clientDTO.getName());
+        client.setLastName(clientDTO.getLastName());
+        client.setAge(clientDTO.getAge());
+        client.setPhone(clientDTO.getPhone());
+        client.setEmail(clientDTO.getEmail());
         client.setDateUpdated(LocalDateTime.now());
 
         return ClientDTO.of(clientRepository.save(client));
@@ -40,18 +51,20 @@ public class ClientService {
     public List<ClientDTO> getAll() {
         List<Client> clients = clientRepository.findAll();
 
-        List<ClientDTO> clientDtos = clients.stream().map(ClientDTO::of).collect(Collectors.toList());
-
-        return clientDtos;
+        return clients.stream().map(ClientDTO::of).collect(Collectors.toList());
     }
 
     public ClientDTO getById(String id) {
         Optional<Client> clientOptional = clientRepository.findById(id);
 
-        if (!clientOptional.isPresent()) {
+        if (clientOptional.isEmpty()) {
             throw new NotFoundException("Não localizado client com id -> " + id);
         }
 
         return ClientDTO.of(clientOptional.get());
+    }
+
+    public void deleteById(String id) {
+        this.clientRepository.deleteById(id);
     }
 }

@@ -13,8 +13,9 @@ public class OrderSale extends BaseEntity {
     private String clientId;
     private String sellerId;
     private List<Product> products;
-    private BigDecimal totalOrder;
     private BigDecimal discount;
+    private BigDecimal totalOrder;
+    private BigDecimal totalOrderWithDiscount;
 
 
 }

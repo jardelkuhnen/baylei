@@ -6,6 +6,8 @@ import lombok.Data;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
+import java.util.List;
+import java.util.stream.Collectors;
 
 @Data
 @Builder
@@ -38,5 +40,13 @@ public class ProductDTO {
                 .dateCreated(product.getDateCreated())
                 .dateUpdated(product.getDateUpdated())
                 .build();
+    }
+
+    public static List<Product> ofProductsDTO(List<ProductDTO> products) {
+        return products.stream().map(ProductDTO::of).collect(Collectors.toList());
+    }
+
+    public static List<ProductDTO> ofProducts(List<Product> products) {
+        return products.stream().map(ProductDTO::of).collect(Collectors.toList());
     }
 }
