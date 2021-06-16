@@ -1,17 +1,21 @@
 <h1 align="center">Welcome to Baylei 👋</h1>
 <p>
   <img alt="Version" src="https://img.shields.io/badge/version-1.0.0-blue.svg?cacheSeconds=2592000" />
-  <a href="https://twitter.com/jardel\_kuhnen" target="_blank">
-    <img alt="Twitter: jardel\_kuhnen" src="https://img.shields.io/twitter/follow/jardel\_kuhnen.svg?style=social" />
-  </a>
 </p>
 
-> Take care of your PetShop Store
+> Application to help you on day by day on your business of Pet Shop Store!
 
 ## Usage
 
 ```sh
-Build application and run java -jar to run de app
+Use the command 'mvn clean package' to generate jars.
+
+Use the command 'java -jar appName' to run the apps
+
+Run 'baylei-config-server' to start the server os configurations
+Run 'baylei-eureka' to start the eureka server
+Run 'baylei-app' to start the app.
+
 ```
 
 ## Run tests
@@ -19,14 +23,6 @@ Build application and run java -jar to run de app
 ```sh
 mvn clean package
 ```
-
-## Author
-
-👤 **Jardel Back Kuhnen**
-
-* Website: https://www.linkedin.com/in/jardel-back-kuhnen-702807a1/
-* Twitter: [@jardel\_kuhnen](https://twitter.com/jardel\_kuhnen)
-* Github: [@jardelkuhnen](https://github.com/jardelkuhnen)
 
 ## Show your support
 
