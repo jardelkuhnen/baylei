@@ -1,0 +1,51 @@
+services:
+
+  mongo:
+    image: mongo
+    hostname: mongo
+    ports:
+      - "27017:27017"
+    expose:
+      - 27017
+    container_name: mongo
+
+  baylei-config-server:
+    image: baylei-config-server:latest
+    hostname: baylei-config-server
+    ports:
+      - "8888:8888"
+    expose:
+      - 8888
+    container_name: baylei-config-server
+
+  baylei-eureka:
+    image: baylei-eureka:latest
+    hostname: baylei-eureka
+    restart: on-failure
+    ports:
+      - "8761:8761"
+    expose:
+      - 8761
+    container_name: baylei-eureka
+    depends_on:
+      baylei-config-server:
+        condition: service_started
+
+  baylei-app:
+    image: baylei-app:latest
+    hostname: baylei-app
+    ports:
+      - "9092:9092"
+    expose:
+      - 9092
+    container_name: baylei-app
+    depends_on:
+      baylei-config-server:
+        condition: service_started
+      baylei-eureka:
+        condition: service_started
+      mongo:
+        condition: service_started
+    environment:
+      spring_data_mongodb_uri: mongodb://mongo:27017/baylei
+      spring_cloud_config_uri: http://baylei-config-server:8888
