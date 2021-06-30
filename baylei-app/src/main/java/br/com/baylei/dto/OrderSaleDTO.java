@@ -34,6 +34,8 @@ public class OrderSaleDTO {
                 .totalOrder(orderSale.getTotalOrder())
                 .totalOrderWithDiscount(orderSale.getTotalOrderWithDiscount())
                 .products(ProductDTO.ofProducts(orderSale.getProducts()))
+                .dateCreated(orderSale.getDateCreated())
+                .dateUpdated(orderSale.getDateUpdated())
                 .build();
     }
 
@@ -44,11 +46,11 @@ public class OrderSaleDTO {
         orderSale.setClientId(orderSaleDTO.getClientId());
         orderSale.setSellerId(orderSaleDTO.getSellerId());
         orderSale.setDiscount(orderSaleDTO.getDiscount());
-        orderSale.setProducts(ProductDTO.ofProductsDTO(orderSaleDTO.getProducts()));
+//        orderSale.setProducts(ProductDTO.ofProductsDTO(orderSaleDTO.getProducts()));
 
-        BigDecimal totalOrder = OrderSaleService.getTotalOrderPrice(orderSaleDTO.getProducts());
-        orderSale.setTotalOrder(totalOrder);
-        orderSale.setTotalOrderWithDiscount(totalOrder.subtract(orderSaleDTO.getDiscount()));
+//        BigDecimal totalOrder = OrderSaleService.getTotalOrderPrice(orderSaleDTO.getProducts());
+//        orderSale.setTotalOrder(totalOrder);
+//        orderSale.setTotalOrderWithDiscount(totalOrder.subtract(orderSaleDTO.getDiscount()));
 
         return orderSale;
     }

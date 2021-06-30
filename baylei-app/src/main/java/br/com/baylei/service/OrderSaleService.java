@@ -2,6 +2,7 @@ package br.com.baylei.service;
 
 import br.com.baylei.dto.OrderSaleDTO;
 import br.com.baylei.dto.ProductDTO;
+import br.com.baylei.entity.Product;
 import br.com.baylei.exception.NotFoundException;
 import br.com.baylei.repository.OrderSaleRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,10 +17,12 @@ import java.util.stream.Collectors;
 public class OrderSaleService {
 
     private final OrderSaleRepository orderSaleRepository;
+    private final ProductService productService;
 
     @Autowired
-    public OrderSaleService(OrderSaleRepository orderSaleRepository) {
+    public OrderSaleService(OrderSaleRepository orderSaleRepository, ProductService productService) {
         this.orderSaleRepository = orderSaleRepository;
+        this.productService = productService;
     }
 
     public static BigDecimal getTotalOrderPrice(List<ProductDTO> products) {
@@ -33,10 +36,27 @@ public class OrderSaleService {
 
     public OrderSaleDTO save(OrderSaleDTO orderSaleDTO) {
 
+        List<Product> products = productService.findByIds(orderSaleDTO.getProducts().stream().map(p -> p.getId()).collect(Collectors.toList()));
+
         var orderSale = OrderSaleDTO.of(orderSaleDTO);
+
+        BigDecimal totalProducts = sumTotalProducts(products);
+
+        orderSale.setProducts(products);
+        orderSale.setTotalOrder(totalProducts);
+        orderSale.setTotalOrderWithDiscount(totalProducts.subtract(orderSaleDTO.getDiscount()));
         orderSale.setDateCreated(LocalDateTime.now());
 
         return OrderSaleDTO.of(orderSaleRepository.save(orderSale));
+    }
+
+    private BigDecimal sumTotalProducts(List<Product> products) {
+        BigDecimal totalProducts = BigDecimal.ZERO;
+        List<BigDecimal> priceProducts = products.stream().map(p -> p.getPrice()).collect(Collectors.toList());
+
+        totalProducts = priceProducts.stream().reduce(totalProducts, BigDecimal::add);
+
+        return totalProducts;
     }
 
     public OrderSaleDTO update(OrderSaleDTO orderSaleDTO) {
