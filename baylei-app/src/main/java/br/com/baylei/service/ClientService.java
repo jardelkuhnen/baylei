@@ -2,12 +2,14 @@ package br.com.baylei.service;
 
 import br.com.baylei.dto.ClientDTO;
 import br.com.baylei.entity.Client;
+import br.com.baylei.entity.Product;
 import br.com.baylei.exception.NotFoundException;
 import br.com.baylei.repository.ClientRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -67,4 +69,13 @@ public class ClientService {
     public void deleteById(String id) {
         this.clientRepository.deleteById(id);
     }
+
+    public List<Client> findByIds(List<String> clientsId) {
+        List<Client> clientsFound = new ArrayList<>();
+
+        clientRepository.findAllById(clientsId).forEach(clientsFound::add);
+
+        return clientsFound;
+    }
+
 }

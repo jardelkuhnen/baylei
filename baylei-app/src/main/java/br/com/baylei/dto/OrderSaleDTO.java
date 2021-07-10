@@ -1,7 +1,7 @@
 package br.com.baylei.dto;
 
 import br.com.baylei.entity.OrderSale;
-import br.com.baylei.service.OrderSaleService;
+import br.com.baylei.entity.Product;
 import lombok.Builder;
 import lombok.Data;
 
@@ -14,8 +14,8 @@ import java.util.List;
 public class OrderSaleDTO {
 
     private String id;
-    private String clientId;
-    private String sellerId;
+    private ClientDTO client;
+    private SellerDTO seller;
     private List<ProductDTO> products;
     private BigDecimal discount;
     private BigDecimal totalOrder;
@@ -25,15 +25,15 @@ public class OrderSaleDTO {
 
 
 
-    public static OrderSaleDTO of(OrderSale orderSale) {
+    public static OrderSaleDTO of(OrderSale orderSale, List<Product> products, ClientDTO clientDTO, SellerDTO sellerDTO) {
         return OrderSaleDTO.builder()
                 .id(orderSale.getId())
-                .clientId(orderSale.getClientId())
-                .sellerId(orderSale.getSellerId())
+                .client(clientDTO)
+                .seller(sellerDTO)
                 .discount(orderSale.getDiscount())
                 .totalOrder(orderSale.getTotalOrder())
                 .totalOrderWithDiscount(orderSale.getTotalOrderWithDiscount())
-                .products(ProductDTO.ofProducts(orderSale.getProducts()))
+                .products(ProductDTO.ofProducts(products))
                 .dateCreated(orderSale.getDateCreated())
                 .dateUpdated(orderSale.getDateUpdated())
                 .build();
@@ -43,17 +43,11 @@ public class OrderSaleDTO {
         var orderSale = new OrderSale();
 
         orderSale.setId(orderSaleDTO.getId());
-        orderSale.setClientId(orderSaleDTO.getClientId());
-        orderSale.setSellerId(orderSaleDTO.getSellerId());
+        orderSale.setClientId(orderSaleDTO.getId());
+        orderSale.setSellerId(orderSaleDTO.getId());
         orderSale.setDiscount(orderSaleDTO.getDiscount());
-//        orderSale.setProducts(ProductDTO.ofProductsDTO(orderSaleDTO.getProducts()));
-
-//        BigDecimal totalOrder = OrderSaleService.getTotalOrderPrice(orderSaleDTO.getProducts());
-//        orderSale.setTotalOrder(totalOrder);
-//        orderSale.setTotalOrderWithDiscount(totalOrder.subtract(orderSaleDTO.getDiscount()));
 
         return orderSale;
     }
-
 
 }
