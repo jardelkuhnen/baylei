@@ -9,9 +9,11 @@ import java.util.List;
 @Document
 public class Plan extends BaseEntity {
 
+    private String name;
+    private Integer ammount;
+    private String description;
     private List<String> clientsId;
     private List<String> productIds;
-    private Integer ammount;
 
 
 

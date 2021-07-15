@@ -17,6 +17,9 @@ import java.util.stream.Collectors;
 public class PlanDTO {
 
     private String id;
+    @NotBlank(message = "Nome deve ser informado")
+    private String name;
+    private String description;
     @NotNull(message = "Clientes devem ser informados")
     private List<ClientDTO> clients;
     @NotNull(message = "Produtos devem ser informados")
@@ -30,6 +33,8 @@ public class PlanDTO {
     public static PlanDTO of(Plan plan, List<Product> products, List<Client> clients) {
         return PlanDTO.builder()
                 .id(plan.getId())
+                .name(plan.getName())
+                .description(plan.getDescription())
                 .clients(clients.stream().map(c -> ClientDTO.of(c)).collect(Collectors.toList()))
                 .products(products.stream().map(p -> ProductDTO.of(p)).collect(Collectors.toList()))
                 .ammount(plan.getAmmount())
@@ -40,7 +45,9 @@ public class PlanDTO {
 
     public static Plan of(PlanDTO planDTO) {
         Plan plan = new Plan();
+        plan.setName(planDTO.getName());
         plan.setAmmount(planDTO.getAmmount());
+        plan.setDescription(planDTO.getDescription());
         plan.setClientsId(planDTO.getClients().stream().map(c -> c.getId()).collect(Collectors.toList()));
         plan.setProductIds(planDTO.getProducts().stream().map(p -> p.getId()).collect(Collectors.toList()));
 
