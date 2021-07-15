@@ -2,7 +2,12 @@ package br.com.baylei.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import springfox.documentation.oas.annotations.EnableOpenApi;
+import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurationSupport;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
+import springfox.documentation.builders.PathSelectors;
+import springfox.documentation.builders.RequestHandlerSelectors;
 import springfox.documentation.service.ApiInfo;
 import springfox.documentation.service.Contact;
 import springfox.documentation.spi.DocumentationType;
@@ -17,10 +22,10 @@ import static springfox.documentation.builders.PathSelectors.regex;
 
 @Configuration
 @EnableSwagger2
-@EnableOpenApi
-public class SwaggerConfig {
+//@EnableOpenApi
+public class SwaggerConfig implements WebMvcConfigurer {
 
-    private static final String API_TITLE = "Baylei";
+    private static final String API_TITLE = "Bailey";
     private static final String API_DESCRIPTION = "API for pet busines";
     private static final String API_VERSION = "0.0.1";
     private static final String TERMS_OF_SERVICE_URL = "none";
@@ -33,43 +38,12 @@ public class SwaggerConfig {
     }
 
     @Bean
-    public Docket insuranceApi() {
-        var docket = new Docket(springfox.documentation.spi.DocumentationType.SWAGGER_2);
-        return docket.apiInfo(getApiInfo());
-    }
-
-    @Bean
-    UiConfiguration uiConfig() {
-        return UiConfigurationBuilder.builder()
-                .deepLinking(true)
-                .displayOperationId(false)
-                .defaultModelsExpandDepth(1)
-                .defaultModelExpandDepth(1)
-                .defaultModelRendering(ModelRendering.EXAMPLE)
-                .displayRequestDuration(false)
-                .docExpansion(DocExpansion.NONE)
-                .filter(false)
-                .maxDisplayedTags(null)
-                .operationsSorter(OperationsSorter.ALPHA)
-                .showExtensions(false)
-                .showCommonExtensions(false)
-                .tagsSorter(TagsSorter.ALPHA)
-                .supportedSubmitMethods(UiConfiguration.Constants.DEFAULT_SUBMIT_METHODS)
-                .validatorUrl(null)
-                .build();
-    }
-
-    @Bean
-    public Docket openApiPetStore() {
-        return new Docket(DocumentationType.OAS_30)
-                .groupName("api-bayei")
+    public Docket petStoreApi() {
+        return new Docket(DocumentationType.SWAGGER_2)
                 .select()
-                .paths(petstorePaths())
-                .build();
+                .apis(RequestHandlerSelectors.any())
+                .paths(PathSelectors.ant("/api/**"))
+                .build()
+                .apiInfo(getApiInfo());
     }
-
-    private Predicate<String> petstorePaths() {
-        return regex(".*/api/.*");
-    }
-
 }
