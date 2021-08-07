@@ -4,6 +4,7 @@ import br.com.baylei.entity.Product;
 import lombok.Builder;
 import lombok.Data;
 
+import javax.validation.constraints.NotBlank;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.List;
@@ -14,8 +15,11 @@ import java.util.stream.Collectors;
 public class ProductDTO {
 
     private String id;
+    @NotBlank(message = "Nome deve ser informado")
     private String name;
+    @NotBlank(message = "Descrição deve ser informada")
     private String description;
+    @NotBlank(message = "Preço deve ser informado")
     private BigDecimal price;
     private LocalDateTime dateCreated;
     private LocalDateTime dateUpdated;
