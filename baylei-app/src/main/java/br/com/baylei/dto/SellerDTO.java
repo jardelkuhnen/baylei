@@ -1,10 +1,10 @@
 package br.com.baylei.dto;
 
-import br.com.baylei.entity.Client;
 import br.com.baylei.entity.Seller;
 import lombok.Builder;
 import lombok.Data;
 
+import javax.validation.constraints.NotEmpty;
 import java.time.LocalDateTime;
 
 @Data
@@ -12,7 +12,9 @@ import java.time.LocalDateTime;
 public class SellerDTO {
 
     private String id;
+    @NotEmpty(message = "Nome deve ser informado")
     private String name;
+    @NotEmpty(message = "Sobrenome deve ser informado")
     private String lastName;
     private Integer age;
     private String phone;

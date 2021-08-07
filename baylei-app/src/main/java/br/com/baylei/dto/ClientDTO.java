@@ -4,6 +4,8 @@ import br.com.baylei.entity.Client;
 import lombok.Builder;
 import lombok.Data;
 
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotEmpty;
 import java.time.LocalDateTime;
 
 @Data
@@ -11,7 +13,9 @@ import java.time.LocalDateTime;
 public class ClientDTO {
 
     private String id;
+    @NotBlank(message = "Nome deve ser informado")
     private String name;
+    @NotBlank(message = "Sobrenome deve ser informado")
     private String lastName;
     private Integer age;
     private String phone;
