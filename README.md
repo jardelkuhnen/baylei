@@ -1,9 +1,13 @@
-<h1 align="center">Welcome to Baylei 👋</h1>
+<h1 align="center">Welcome to Bailey 👋</h1>
 <p>
   <img alt="Version" src="https://img.shields.io/badge/version-1.0.0-blue.svg?cacheSeconds=2592000" />
 </p>
 
 > Application to help you on day by day on your business of Pet Shop Store!
+
+## Arquitectural Documentation
+
+- [Arquitetura MVP ](https://github.com/jardelkuhnen/baylei/blob/master/Documenta%C3%A7%C3%A3o%20Arquitetural/Arquitetura%20MVP.md)
 
 ## Usage
 
