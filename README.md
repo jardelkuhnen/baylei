@@ -5,9 +5,10 @@
 
 > Application to help you on day by day on your business of Pet Shop Store!
 
-## Arquitectural Documentation
+## Architectural Documentation
 
 - [Arquitetura MVP ](https://github.com/jardelkuhnen/baylei/blob/master/Documenta%C3%A7%C3%A3o%20Arquitetural/Arquitetura%20MVP.md)
+- [Documentação API](https://github.com/jardelkuhnen/baylei/blob/master/Documenta%C3%A7%C3%A3o%20Arquitetural/api-documentation.pdf)
 
 ## Usage
 
