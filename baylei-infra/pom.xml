@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://maven.apache.org/POM/4.0.0"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>br.com.baylei</groupId>
+        <artifactId>baylei</artifactId>
+        <version>0.0.1-SNAPSHOT</version>
+    </parent>
+
+    <artifactId>infrastructure</artifactId>
+    <packaging>pom</packaging>
+
+    <name>infrastructure</name>
+    <description>infrastructure</description>
+
+    <modules>
+        <module>baylei-adapter-mongo</module>
+        <module>baylei-adapter-rest</module>
+    </modules>
+
+</project>

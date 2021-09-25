@@ -1,10 +1,11 @@
 package br.com.baylei.service;
 
+import br.com.baylei.api.ClientService;
 import br.com.baylei.dto.PlanDTO;
-import br.com.baylei.entity.Client;
 import br.com.baylei.entity.Plan;
 import br.com.baylei.entity.Product;
 import br.com.baylei.exception.NotFoundException;
+import br.com.baylei.model.Client;
 import br.com.baylei.repository.PlanRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -34,8 +35,8 @@ public class PlanService {
         plan.setDateCreated(LocalDateTime.now());
 
         List<Product> products = productService.findByIds(plan.getProductIds());
-        List<Client> clients = clientService.findByIds(plan.getClientsId());
-
+//        List<Client> clients = clientService.findByIds(plan.getClientsId());
+        List<Client> clients = new ArrayList<>();
 
         return PlanDTO.of(planRepository.save(plan), products, clients);
     }
@@ -45,8 +46,9 @@ public class PlanService {
         var plan = PlanDTO.of(planDTO);
 
         List<Product> products = productService.findByIds(plan.getProductIds());
-        List<Client> clients = clientService.findByIds(plan.getClientsId());
+//        List<Client> clients = clientService.findByIds(plan.getClientsId());
 
+        List<Client> clients = new ArrayList<>();
         return PlanDTO.of(planRepository.save(plan), products, clients);
 
     }
@@ -58,8 +60,9 @@ public class PlanService {
 
         for (Plan plan : plans) {
             List<Product> products = productService.findByIds(plan.getProductIds());
-            List<Client> clients = clientService.findByIds(plan.getClientsId());
+//            List<Client> clients = clientService.findByIds(plan.getClientsId());
 
+            List<Client> clients = new ArrayList<>();
             dtos.add(PlanDTO.of(plan, products, clients));
         }
 
@@ -77,8 +80,8 @@ public class PlanService {
         var plan = planOptional.get();
 
         List<Product> products = productService.findByIds(plan.getProductIds());
-        List<Client> clients = clientService.findByIds(plan.getClientsId());
-
+//        List<Client> clients = clientService.findByIds(plan.getClientsId());
+        List<Client> clients = new ArrayList<>();
         return PlanDTO.of(plan, products, clients);
     }
 

@@ -114,6 +114,12 @@
 			<version>3.0.0</version>
 		</dependency>
 
+		<dependency>
+			<groupId>br.com.baylei</groupId>
+			<artifactId>baylei-model</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
+
 	</dependencies>
 
 	<dependencyManagement>

@@ -25,5 +25,6 @@
 		<module>baylei-app</module>
 		<module>baylei-config-server</module>
 		<module>baylei-eureka</module>
+		<module>baylei-model</module>
     </modules>
 </project>
