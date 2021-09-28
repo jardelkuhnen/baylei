@@ -6,11 +6,13 @@ import br.com.baylei.ports.ClientPersistencePort;
 import br.com.baylei.repository.ClientRepository;
 import org.springframework.beans.BeanUtils;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 public class ClientSpringJpaAdapter implements ClientPersistencePort {
 
-    private ClientRepository clientRepository;
+    private final ClientRepository clientRepository;
 
     public ClientSpringJpaAdapter(ClientRepository clientRepository) {
         this.clientRepository = clientRepository;
@@ -18,7 +20,7 @@ public class ClientSpringJpaAdapter implements ClientPersistencePort {
 
     @Override
     public Client save(Client client) {
-        ClientEntity clientEntity = new ClientEntity();
+        var clientEntity = new ClientEntity();
         BeanUtils.copyProperties(client, clientEntity);
         BeanUtils.copyProperties(client, clientRepository.save(clientEntity));
         return client;
@@ -26,12 +28,31 @@ public class ClientSpringJpaAdapter implements ClientPersistencePort {
 
     @Override
     public List<Client> getAll() {
-        return null;
+        List<Client> clients = new ArrayList<>();
+        List<ClientEntity> clientEntities = clientRepository.findAll();
+
+        for (ClientEntity entity : clientEntities) {
+            var client = new Client();
+            BeanUtils.copyProperties(entity, client);
+            clients.add(client);
+        }
+
+        return clients;
     }
 
     @Override
     public Client getById(String id) {
-        return null;
+
+        Optional<ClientEntity> clientEntityOptional = clientRepository.findById(id);
+
+        if (!clientEntityOptional.isPresent()) {
+            return null;
+        }
+
+        var client = new Client();
+        BeanUtils.copyProperties(clientEntityOptional.get(), client);
+
+        return client;
     }
 
     @Override
@@ -41,11 +62,19 @@ public class ClientSpringJpaAdapter implements ClientPersistencePort {
 
     @Override
     public void deleteById(String id) {
-
+        clientRepository.deleteById(id);
     }
 
     @Override
     public List<Client> getAllById(List<String> clientsId) {
-        return null;
+
+        List<Client> clients = new ArrayList<>();
+        clientRepository.findAllById(clientsId).forEach(clientEntity -> {
+            var client = new Client();
+            BeanUtils.copyProperties(clientEntity, client);
+            clients.add(client);
+        });
+
+        return clients;
     }
 }

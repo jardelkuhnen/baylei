@@ -1,11 +1,11 @@
 package br.com.baylei.api;
 
 import br.com.baylei.dto.ClientDTO;
+import br.com.baylei.exception.NotFoundException;
 
 import java.util.List;
 
 public interface ClientService {
-
 
     ClientDTO save(ClientDTO clientDTO);
 

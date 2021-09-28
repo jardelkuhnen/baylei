@@ -24,7 +24,6 @@ public class OrderSaleDTO {
     private LocalDateTime dateUpdated;
 
 
-
     public static OrderSaleDTO of(OrderSale orderSale, List<Product> products, ClientDTO clientDTO, SellerDTO sellerDTO) {
         return OrderSaleDTO.builder()
                 .id(orderSale.getId())

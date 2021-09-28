@@ -9,11 +9,11 @@
         <version>0.0.1-SNAPSHOT</version>
     </parent>
 
-    <artifactId>infrastructure</artifactId>
+    <artifactId>baylei-infra</artifactId>
     <packaging>pom</packaging>
 
-    <name>infrastructure</name>
-    <description>infrastructure</description>
+    <name>baylei-infra</name>
+    <description>baylei-infra</description>
 
     <modules>
         <module>baylei-adapter-mongo</module>

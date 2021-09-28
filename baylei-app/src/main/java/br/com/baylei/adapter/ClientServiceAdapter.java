@@ -24,7 +24,7 @@ public class ClientServiceAdapter implements ClientService {
 
     @Override
     public ClientDTO save(ClientDTO clientDTO) {
-        Client client = ClientDTO.ofDto(clientDTO);
+        var client = ClientDTO.ofDto(clientDTO);
         client.setDateCreated(LocalDateTime.now());
         return ClientDTO.of(clientPersistencePort.save(client));
     }
@@ -33,7 +33,7 @@ public class ClientServiceAdapter implements ClientService {
     public ClientDTO update(ClientDTO clientDTO) {
         var client = clientPersistencePort.getById(clientDTO.getId());
 
-        if(Objects.isNull(client)) {
+        if (Objects.isNull(client)) {
             throw new NotFoundException("Não localizado cliente com id -> " + clientDTO.getId());
         }
 
@@ -55,8 +55,8 @@ public class ClientServiceAdapter implements ClientService {
     }
 
     @Override
-    public ClientDTO getById(String id) {
-        Client client = clientPersistencePort.getById(id);
+    public ClientDTO getById(String id) throws NotFoundException {
+        var client = clientPersistencePort.getById(id);
 
         if (Objects.isNull(client)) {
             throw new NotFoundException("Não localizado client com id -> " + id);

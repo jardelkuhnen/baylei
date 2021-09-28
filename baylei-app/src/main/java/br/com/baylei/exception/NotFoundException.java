@@ -1,10 +1,10 @@
 package br.com.baylei.exception;
 
-public class NotFoundException extends RuntimeException {
+import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.ResponseStatus;
 
-    public NotFoundException(String cause, Throwable ex) {
-        super(cause, ex);
-    }
+@ResponseStatus(HttpStatus.BAD_REQUEST)
+public class NotFoundException extends RuntimeException {
 
     public NotFoundException(String cause) {
         super(cause);
