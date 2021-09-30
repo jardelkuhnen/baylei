@@ -1,25 +1,50 @@
 package br.com.baylei.controller;
 
+import br.com.baylei.api.ClientService;
 import br.com.baylei.dto.ClientDTO;
+import io.swagger.annotations.Api;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-public interface ClientController {
+@RestController
+@Api(tags = {"Client service"})
+@RequestMapping("/api/clients")
+public class ClientController {
+
+    private final ClientService clientService;
+
+    @Autowired
+    public ClientController(ClientService clientService) {
+        this.clientService = clientService;
+    }
 
     @PostMapping
-    ResponseEntity<ClientDTO> save(@RequestBody ClientDTO clientDTO);
+    public ResponseEntity<ClientDTO> save(@RequestBody ClientDTO clientDTO) {
+        return new ResponseEntity<>(clientService.save(clientDTO), HttpStatus.CREATED);
+    }
 
     @PutMapping
-    ResponseEntity<ClientDTO> update(@RequestBody ClientDTO clientDTO);
+    public ResponseEntity<ClientDTO> update(@RequestBody ClientDTO clientDTO) {
+        return new ResponseEntity<>(clientService.update(clientDTO), HttpStatus.OK);
+    }
 
     @GetMapping
-    ResponseEntity<List<ClientDTO>> getAll();
+    public ResponseEntity<List<ClientDTO>> getAll() {
+        return new ResponseEntity<>(clientService.getAll(), HttpStatus.OK);
+    }
 
     @GetMapping("/{id}")
-    ResponseEntity<ClientDTO> getById(@PathVariable String id);
+    public ResponseEntity<ClientDTO> getById(@PathVariable String id) {
+        return new ResponseEntity<>(clientService.getById(id), HttpStatus.OK);
+    }
 
     @DeleteMapping("/{id}")
-    ResponseEntity<String> deleteById(@PathVariable String id);
+    public ResponseEntity<String> deleteById(@PathVariable String id) {
+        clientService.deleteById(id);
+        return new ResponseEntity<>(id, HttpStatus.OK);
+    }
 }
