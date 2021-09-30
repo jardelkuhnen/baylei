@@ -55,7 +55,7 @@ public class ClientServiceAdapter implements ClientService {
     }
 
     @Override
-    public ClientDTO getById(String id) throws NotFoundException {
+    public ClientDTO getById(String id) {
         var client = clientPersistencePort.getById(id);
 
         if (Objects.isNull(client)) {

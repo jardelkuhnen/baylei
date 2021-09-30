@@ -22,7 +22,7 @@ public class ClientSpringJpaAdapter implements ClientPersistencePort {
     public Client save(Client client) {
         var clientEntity = new ClientEntity();
         BeanUtils.copyProperties(client, clientEntity);
-        BeanUtils.copyProperties(client, clientRepository.save(clientEntity));
+        BeanUtils.copyProperties(clientRepository.save(clientEntity), client);
         return client;
     }
 
