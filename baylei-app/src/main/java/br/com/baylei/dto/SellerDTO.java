@@ -1,6 +1,6 @@
 package br.com.baylei.dto;
 
-import br.com.baylei.entity.Seller;
+import br.com.baylei.model.Seller;
 import lombok.Builder;
 import lombok.Data;
 

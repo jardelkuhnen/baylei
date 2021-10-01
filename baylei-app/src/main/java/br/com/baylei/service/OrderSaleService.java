@@ -1,6 +1,7 @@
 package br.com.baylei.service;
 
 import br.com.baylei.api.ClientService;
+import br.com.baylei.api.SellerService;
 import br.com.baylei.dto.ClientDTO;
 import br.com.baylei.dto.OrderSaleDTO;
 import br.com.baylei.dto.ProductDTO;

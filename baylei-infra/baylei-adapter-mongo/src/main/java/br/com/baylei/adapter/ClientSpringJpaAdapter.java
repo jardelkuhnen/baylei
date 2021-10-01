@@ -56,8 +56,18 @@ public class ClientSpringJpaAdapter implements ClientPersistencePort {
     }
 
     @Override
-    public Client update(Client clientDTO) {
-        return null;
+    public Client update(Client client) {
+        Optional<ClientEntity> clientEntityOptional = clientRepository.findById(client.getId());
+
+        if(!clientEntityOptional.isPresent()) {
+            return null;
+        }
+
+        var clientEntity = clientEntityOptional.get();
+        BeanUtils.copyProperties(client, clientEntity);
+        BeanUtils.copyProperties(clientRepository.save(clientEntity), client);
+
+        return client;
     }
 
     @Override
