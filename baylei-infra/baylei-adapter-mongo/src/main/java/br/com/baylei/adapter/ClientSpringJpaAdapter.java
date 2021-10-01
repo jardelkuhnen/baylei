@@ -59,7 +59,7 @@ public class ClientSpringJpaAdapter implements ClientPersistencePort {
     public Client update(Client client) {
         Optional<ClientEntity> clientEntityOptional = clientRepository.findById(client.getId());
 
-        if(!clientEntityOptional.isPresent()) {
+        if (!clientEntityOptional.isPresent()) {
             return null;
         }
 

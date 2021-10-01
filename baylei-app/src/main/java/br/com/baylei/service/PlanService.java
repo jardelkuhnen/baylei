@@ -1,11 +1,12 @@
 package br.com.baylei.service;
 
 import br.com.baylei.api.ClientService;
+import br.com.baylei.api.ProductService;
+import br.com.baylei.dto.ClientDTO;
 import br.com.baylei.dto.PlanDTO;
+import br.com.baylei.dto.ProductDTO;
 import br.com.baylei.entity.Plan;
-import br.com.baylei.entity.Product;
 import br.com.baylei.exception.NotFoundException;
-import br.com.baylei.model.Client;
 import br.com.baylei.repository.PlanRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -30,26 +31,24 @@ public class PlanService {
     }
 
     public PlanDTO save(PlanDTO planDTO) {
-        Plan plan = PlanDTO.of(planDTO);
+        var plan = PlanDTO.of(planDTO);
 
         plan.setDateCreated(LocalDateTime.now());
 
-        List<Product> products = productService.findByIds(plan.getProductIds());
-//        List<Client> clients = clientService.findByIds(plan.getClientsId());
-        List<Client> clients = new ArrayList<>();
+        List<ProductDTO> productEntities = productService.findByIds(plan.getProductIds());
+        List<ClientDTO> clients = clientService.findByIds(plan.getClientsId());
 
-        return PlanDTO.of(planRepository.save(plan), products, clients);
+        return PlanDTO.of(planRepository.save(plan), productEntities, clients);
     }
 
     public PlanDTO update(PlanDTO planDTO) {
 
         var plan = PlanDTO.of(planDTO);
 
-        List<Product> products = productService.findByIds(plan.getProductIds());
-//        List<Client> clients = clientService.findByIds(plan.getClientsId());
+        List<ProductDTO> productEntities = productService.findByIds(plan.getProductIds());
+        List<ClientDTO> clients = clientService.findByIds(plan.getClientsId());
 
-        List<Client> clients = new ArrayList<>();
-        return PlanDTO.of(planRepository.save(plan), products, clients);
+        return PlanDTO.of(planRepository.save(plan), productEntities, clients);
 
     }
 
@@ -59,11 +58,10 @@ public class PlanService {
         List<Plan> plans = planRepository.findAll();
 
         for (Plan plan : plans) {
-            List<Product> products = productService.findByIds(plan.getProductIds());
-//            List<Client> clients = clientService.findByIds(plan.getClientsId());
+            List<ProductDTO> productEntities = productService.findByIds(plan.getProductIds());
+            List<ClientDTO> clients = clientService.findByIds(plan.getClientsId());
 
-            List<Client> clients = new ArrayList<>();
-            dtos.add(PlanDTO.of(plan, products, clients));
+            dtos.add(PlanDTO.of(plan, productEntities, clients));
         }
 
         return dtos;
@@ -79,10 +77,10 @@ public class PlanService {
 
         var plan = planOptional.get();
 
-        List<Product> products = productService.findByIds(plan.getProductIds());
-//        List<Client> clients = clientService.findByIds(plan.getClientsId());
-        List<Client> clients = new ArrayList<>();
-        return PlanDTO.of(plan, products, clients);
+        List<ProductDTO> productEntities = productService.findByIds(plan.getProductIds());
+        List<ClientDTO> clients = clientService.findByIds(plan.getClientsId());
+
+        return PlanDTO.of(plan, productEntities, clients);
     }
 
     public void deleteById(String id) {

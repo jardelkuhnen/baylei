@@ -13,7 +13,7 @@ import java.math.BigDecimal;
         @CompoundIndex(name = "_name", def = "{'name' : 1}"),
         @CompoundIndex(name = "_description", def = "{'description' : 1}"),
 })
-public class Product extends BaseEntity {
+public class ProductEntity extends BaseEntity {
 
     private String name;
     private String description;

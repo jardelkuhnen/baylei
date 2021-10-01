@@ -1,8 +1,6 @@
 package br.com.baylei.dto;
 
 import br.com.baylei.entity.Plan;
-import br.com.baylei.entity.Product;
-import br.com.baylei.model.Client;
 import lombok.Builder;
 import lombok.Data;
 
@@ -30,13 +28,13 @@ public class PlanDTO {
     private LocalDateTime dateUpdated;
 
 
-    public static PlanDTO of(Plan plan, List<Product> products, List<Client> clients) {
+    public static PlanDTO of(Plan plan, List<ProductDTO> products, List<ClientDTO> clients) {
         return PlanDTO.builder()
                 .id(plan.getId())
                 .name(plan.getName())
                 .description(plan.getDescription())
-                .clients(clients.stream().map(c -> ClientDTO.of(c)).collect(Collectors.toList()))
-                .products(products.stream().map(p -> ProductDTO.of(p)).collect(Collectors.toList()))
+                .clients(clients)
+                .products(products)
                 .ammount(plan.getAmmount())
                 .dateCreated(plan.getDateCreated())
                 .dateUpdated(plan.getDateUpdated())

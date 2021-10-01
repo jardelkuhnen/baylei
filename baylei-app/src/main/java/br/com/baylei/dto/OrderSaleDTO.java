@@ -1,7 +1,6 @@
 package br.com.baylei.dto;
 
 import br.com.baylei.entity.OrderSale;
-import br.com.baylei.entity.Product;
 import lombok.Builder;
 import lombok.Data;
 
@@ -24,7 +23,7 @@ public class OrderSaleDTO {
     private LocalDateTime dateUpdated;
 
 
-    public static OrderSaleDTO of(OrderSale orderSale, List<Product> products, ClientDTO clientDTO, SellerDTO sellerDTO) {
+    public static OrderSaleDTO of(OrderSale orderSale, List<ProductDTO> productEntities, ClientDTO clientDTO, SellerDTO sellerDTO) {
         return OrderSaleDTO.builder()
                 .id(orderSale.getId())
                 .client(clientDTO)
@@ -32,7 +31,7 @@ public class OrderSaleDTO {
                 .discount(orderSale.getDiscount())
                 .totalOrder(orderSale.getTotalOrder())
                 .totalOrderWithDiscount(orderSale.getTotalOrderWithDiscount())
-                .products(ProductDTO.ofProducts(products))
+                .products(productEntities)
                 .dateCreated(orderSale.getDateCreated())
                 .dateUpdated(orderSale.getDateUpdated())
                 .build();

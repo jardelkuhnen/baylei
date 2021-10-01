@@ -1,13 +1,13 @@
 package br.com.baylei.service;
 
 import br.com.baylei.api.ClientService;
+import br.com.baylei.api.ProductService;
 import br.com.baylei.api.SellerService;
 import br.com.baylei.dto.ClientDTO;
 import br.com.baylei.dto.OrderSaleDTO;
 import br.com.baylei.dto.ProductDTO;
 import br.com.baylei.dto.SellerDTO;
 import br.com.baylei.entity.OrderSale;
-import br.com.baylei.entity.Product;
 import br.com.baylei.exception.NotFoundException;
 import br.com.baylei.repository.OrderSaleRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -49,9 +49,9 @@ public class OrderSaleService {
     public OrderSaleDTO save(OrderSaleDTO orderSaleDTO) {
 
         List<String> produtcsId = orderSaleDTO.getProducts().stream().map(p -> p.getId()).collect(Collectors.toList());
-        List<Product> products = productService.findByIds(produtcsId);
+        List<ProductDTO> productEntities = productService.findByIds(produtcsId);
 
-        if (products.isEmpty()) {
+        if (productEntities.isEmpty()) {
             throw new NotFoundException("Não localizados os produtos!");
         }
 
@@ -67,19 +67,19 @@ public class OrderSaleService {
 
         var orderSale = OrderSaleDTO.of(orderSaleDTO);
 
-        BigDecimal totalProducts = sumTotalProducts(products);
+        BigDecimal totalProducts = sumTotalProducts(productEntities);
 
         orderSale.setProductIds(produtcsId);
         orderSale.setTotalOrder(totalProducts);
         orderSale.setTotalOrderWithDiscount(totalProducts.subtract(orderSaleDTO.getDiscount()));
         orderSale.setDateCreated(LocalDateTime.now());
 
-        return OrderSaleDTO.of(orderSaleRepository.save(orderSale), products, clientDTO, sellerDTO);
+        return OrderSaleDTO.of(orderSaleRepository.save(orderSale), productEntities, clientDTO, sellerDTO);
     }
 
-    private BigDecimal sumTotalProducts(List<Product> products) {
+    private BigDecimal sumTotalProducts(List<ProductDTO> productEntities) {
         BigDecimal totalProducts = BigDecimal.ZERO;
-        List<BigDecimal> priceProducts = products.stream().map(p -> p.getPrice()).collect(Collectors.toList());
+        List<BigDecimal> priceProducts = productEntities.stream().map(p -> p.getPrice()).collect(Collectors.toList());
 
         totalProducts = priceProducts.stream().reduce(totalProducts, BigDecimal::add);
 
@@ -111,7 +111,7 @@ public class OrderSaleService {
         }
 
         List<String> productsId = orderSaleDTO.getProducts().stream().map(p -> p.getId()).collect(Collectors.toList());
-        List<Product> products = productService.findByIds(productsId);
+        List<ProductDTO> productEntities = productService.findByIds(productsId);
 
         orderSale.setProductIds(productsId);
 
@@ -120,7 +120,7 @@ public class OrderSaleService {
         orderSale.setTotalOrder(totalOrder);
         orderSale.setTotalOrderWithDiscount(totalOrder.subtract(orderSaleDTO.getDiscount()));
 
-        return OrderSaleDTO.of(orderSaleRepository.save(orderSale), products, clientDTO, sellerDTO);
+        return OrderSaleDTO.of(orderSaleRepository.save(orderSale), productEntities, clientDTO, sellerDTO);
     }
 
     public List<OrderSaleDTO> getAll() {
@@ -129,11 +129,11 @@ public class OrderSaleService {
         List<OrderSaleDTO> dtos = new ArrayList<>();
 
         for (OrderSale orderSale : ordersSale) {
-            List<Product> products = productService.findByIds(orderSale.getProductIds());
+            List<ProductDTO> productEntities = productService.findByIds(orderSale.getProductIds());
             var sellerDTO = sellerService.getById(orderSale.getSellerId());
             var clientDTO = clientService.getById(orderSale.getClientId());
 
-            dtos.add(OrderSaleDTO.of(orderSale, products, clientDTO, sellerDTO));
+            dtos.add(OrderSaleDTO.of(orderSale, productEntities, clientDTO, sellerDTO));
         }
 
         return dtos;
@@ -149,11 +149,11 @@ public class OrderSaleService {
 
         var orderSale = orderSaleOptional.get();
 
-        List<Product> products = productService.findByIds(orderSale.getProductIds());
+        List<ProductDTO> productEntities = productService.findByIds(orderSale.getProductIds());
         var sellerDTO = sellerService.getById(orderSale.getSellerId());
         var clientDTO = clientService.getById(orderSale.getClientId());
 
-        return OrderSaleDTO.of(orderSale, products, clientDTO, sellerDTO);
+        return OrderSaleDTO.of(orderSale, productEntities, clientDTO, sellerDTO);
     }
 
     public void deleteById(String id) {

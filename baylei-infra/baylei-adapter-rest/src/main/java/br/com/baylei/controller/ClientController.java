@@ -15,12 +15,8 @@ import java.util.List;
 @RequestMapping("/api/clients")
 public class ClientController {
 
-    private final ClientService clientService;
-
     @Autowired
-    public ClientController(ClientService clientService) {
-        this.clientService = clientService;
-    }
+    private ClientService clientService;
 
     @PostMapping
     public ResponseEntity<ClientDTO> save(@RequestBody ClientDTO clientDTO) {

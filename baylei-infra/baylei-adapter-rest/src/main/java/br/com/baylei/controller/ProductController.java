@@ -1,7 +1,7 @@
 package br.com.baylei.controller;
 
+import br.com.baylei.api.ProductService;
 import br.com.baylei.dto.ProductDTO;
-import br.com.baylei.service.ProductService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@Api(tags ={"Products service"} )
+@Api(tags = {"Products service"})
 @RequestMapping("/api/products")
 public class ProductController {
 
