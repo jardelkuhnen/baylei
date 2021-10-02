@@ -4,7 +4,7 @@ import br.com.baylei.api.SellerService;
 import br.com.baylei.dto.SellerDTO;
 import br.com.baylei.exception.NotFoundException;
 import br.com.baylei.model.Seller;
-import br.com.baylei.ports.SellerPersistencePort;
+import br.com.baylei.usecase.SellerPersistencePort;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.time.LocalDateTime;

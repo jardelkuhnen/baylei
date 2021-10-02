@@ -6,9 +6,9 @@ import br.com.baylei.exception.NotFoundException;
 import br.com.baylei.model.Client;
 import br.com.baylei.model.Plan;
 import br.com.baylei.model.Product;
-import br.com.baylei.ports.ClientPersistencePort;
-import br.com.baylei.ports.PlanPersistencePort;
-import br.com.baylei.ports.ProductPersistencePort;
+import br.com.baylei.usecase.ClientPersistencePort;
+import br.com.baylei.usecase.PlanPersistencePort;
+import br.com.baylei.usecase.ProductPersistencePort;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.time.LocalDateTime;

@@ -1,7 +1,7 @@
 package br.com.baylei.config;
 
 import br.com.baylei.adapter.*;
-import br.com.baylei.ports.*;
+import br.com.baylei.usecase.*;
 import br.com.baylei.repository.*;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

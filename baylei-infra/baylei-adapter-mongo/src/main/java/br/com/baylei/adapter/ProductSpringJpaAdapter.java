@@ -3,7 +3,7 @@ package br.com.baylei.adapter;
 
 import br.com.baylei.entity.ProductEntity;
 import br.com.baylei.model.Product;
-import br.com.baylei.ports.ProductPersistencePort;
+import br.com.baylei.usecase.ProductPersistencePort;
 import br.com.baylei.repository.ProductRepository;
 import org.springframework.beans.BeanUtils;
 

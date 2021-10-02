@@ -46,3 +46,8 @@ Como banco de dados será utilizando uma instancia de MongoDb.
  O sistema deve estar disponível 99.9% do tempo
  
  
+## Arquitetura Proposta
+
+Para este projeto, visando a qualidade inicial bem como a evolução do projeto e de suas dependencias ao longo do tempo, 
+será utilizado a arquitetura hexagonal como padrão da aplicação.
+

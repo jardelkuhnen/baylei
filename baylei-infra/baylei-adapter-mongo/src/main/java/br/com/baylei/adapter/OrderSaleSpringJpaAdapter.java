@@ -2,7 +2,7 @@ package br.com.baylei.adapter;
 
 import br.com.baylei.entity.OrderSaleEntity;
 import br.com.baylei.model.OrderSale;
-import br.com.baylei.ports.OrderSalePersistencePort;
+import br.com.baylei.usecase.OrderSalePersistencePort;
 import br.com.baylei.repository.OrderSaleRepository;
 import org.springframework.beans.BeanUtils;
 

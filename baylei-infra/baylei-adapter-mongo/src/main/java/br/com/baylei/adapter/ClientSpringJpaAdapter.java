@@ -2,7 +2,7 @@ package br.com.baylei.adapter;
 
 import br.com.baylei.entity.ClientEntity;
 import br.com.baylei.model.Client;
-import br.com.baylei.ports.ClientPersistencePort;
+import br.com.baylei.usecase.ClientPersistencePort;
 import br.com.baylei.repository.ClientRepository;
 import org.springframework.beans.BeanUtils;
 

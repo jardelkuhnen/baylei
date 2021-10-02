@@ -1,11 +1,8 @@
 package br.com.baylei.adapter;
 
-import br.com.baylei.entity.ClientEntity;
 import br.com.baylei.entity.SellerEntity;
-import br.com.baylei.model.Client;
 import br.com.baylei.model.Seller;
-import br.com.baylei.ports.SellerPersistencePort;
-import br.com.baylei.repository.ClientRepository;
+import br.com.baylei.usecase.SellerPersistencePort;
 import br.com.baylei.repository.SellerRepository;
 import org.springframework.beans.BeanUtils;
 

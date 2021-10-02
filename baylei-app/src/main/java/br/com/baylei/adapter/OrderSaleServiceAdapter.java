@@ -8,10 +8,10 @@ import br.com.baylei.model.Client;
 import br.com.baylei.model.OrderSale;
 import br.com.baylei.model.Product;
 import br.com.baylei.model.Seller;
-import br.com.baylei.ports.ClientPersistencePort;
-import br.com.baylei.ports.OrderSalePersistencePort;
-import br.com.baylei.ports.ProductPersistencePort;
-import br.com.baylei.ports.SellerPersistencePort;
+import br.com.baylei.usecase.ClientPersistencePort;
+import br.com.baylei.usecase.OrderSalePersistencePort;
+import br.com.baylei.usecase.ProductPersistencePort;
+import br.com.baylei.usecase.SellerPersistencePort;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.math.BigDecimal;

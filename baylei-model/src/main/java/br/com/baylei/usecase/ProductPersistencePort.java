@@ -1,6 +1,5 @@
-package br.com.baylei.ports;
+package br.com.baylei.usecase;
 
-import br.com.baylei.model.Client;
 import br.com.baylei.model.Product;
 
 import java.util.List;

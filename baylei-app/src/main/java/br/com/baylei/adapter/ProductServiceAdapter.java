@@ -1,12 +1,10 @@
 package br.com.baylei.adapter;
 
 import br.com.baylei.api.ProductService;
-import br.com.baylei.dto.ClientDTO;
 import br.com.baylei.dto.ProductDTO;
 import br.com.baylei.exception.NotFoundException;
-import br.com.baylei.model.Client;
 import br.com.baylei.model.Product;
-import br.com.baylei.ports.ProductPersistencePort;
+import br.com.baylei.usecase.ProductPersistencePort;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.time.LocalDateTime;

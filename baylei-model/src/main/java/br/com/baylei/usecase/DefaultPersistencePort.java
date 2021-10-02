@@ -1,4 +1,4 @@
-package br.com.baylei.ports;
+package br.com.baylei.usecase;
 
 import java.util.List;
 

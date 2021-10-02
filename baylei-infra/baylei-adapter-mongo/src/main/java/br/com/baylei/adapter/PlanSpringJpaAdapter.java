@@ -2,7 +2,7 @@ package br.com.baylei.adapter;
 
 import br.com.baylei.entity.PlanEntity;
 import br.com.baylei.model.Plan;
-import br.com.baylei.ports.PlanPersistencePort;
+import br.com.baylei.usecase.PlanPersistencePort;
 import br.com.baylei.repository.PlanRepository;
 import org.springframework.beans.BeanUtils;
 
