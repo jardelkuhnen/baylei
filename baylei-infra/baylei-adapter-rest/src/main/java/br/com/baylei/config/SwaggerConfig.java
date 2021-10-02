@@ -5,6 +5,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import springfox.documentation.builders.PathSelectors;
 import springfox.documentation.builders.RequestHandlerSelectors;
+import springfox.documentation.oas.annotations.EnableOpenApi;
 import springfox.documentation.service.ApiInfo;
 import springfox.documentation.service.Contact;
 import springfox.documentation.spi.DocumentationType;
@@ -15,7 +16,7 @@ import java.util.ArrayList;
 
 @Configuration
 @EnableSwagger2
-//@EnableOpenApi
+@EnableOpenApi
 public class SwaggerConfig implements WebMvcConfigurer {
 
     private static final String API_TITLE = "Bailey";
