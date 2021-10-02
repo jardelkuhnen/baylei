@@ -52,3 +52,12 @@ Para este projeto, visando a qualidade inicial bem como a evolução do projeto 
 será utilizado a arquitetura hexagonal como padrão da aplicação.
 
 ![ScreenShot](images/hexagonal-architecture.png)
+
+ - Com Essa doção, a aplicação sera quebrada em vários módulos, onde cada módulo terá sua respectiva responsabilidade.
+    Atualmente temos os modulos: 
+     - baylei-app: Responsável pela camada de aplicação, onde ficara toda a lógica do négocio.
+     - baylei-config-server: Responsável por gerenciar as configurações que serão consumidas pelas demais aplicações.
+     - baylei-eureka: Responsável por registrar as aplicações e acompanhar o status.
+     - baylei-model: Responsavel por conter o dominio de negócio, e fornecer as portas para os adaptadores consumir.
+     - baylei-infra/baylei-adapter-mongo: Módulo responsável pela comunicação com o banco de dados MongoDB. (OUTPUT)
+     - baylei-infra/baylei-adapter-rest: Módulo responsável pela entrada de dados na aplicação, disponibilizando apis rest. (INPUT)
