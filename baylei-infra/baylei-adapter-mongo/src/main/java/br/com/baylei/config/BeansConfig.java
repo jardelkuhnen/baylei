@@ -1,17 +1,8 @@
 package br.com.baylei.config;
 
-import br.com.baylei.adapter.ClientSpringJpaAdapter;
-import br.com.baylei.adapter.OrderSaleSpringJpaAdapter;
-import br.com.baylei.adapter.ProductSpringJpaAdapter;
-import br.com.baylei.adapter.SellerSpringJpaAdapter;
-import br.com.baylei.ports.ClientPersistencePort;
-import br.com.baylei.ports.OrderSalePersistencePort;
-import br.com.baylei.ports.ProductPersistencePort;
-import br.com.baylei.ports.SellerPersistencePort;
-import br.com.baylei.repository.ClientRepository;
-import br.com.baylei.repository.OrderSaleRepository;
-import br.com.baylei.repository.ProductRepository;
-import br.com.baylei.repository.SellerRepository;
+import br.com.baylei.adapter.*;
+import br.com.baylei.ports.*;
+import br.com.baylei.repository.*;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -36,6 +27,11 @@ public class BeansConfig {
     @Bean
     public OrderSalePersistencePort getOrderSalePersistencePort(OrderSaleRepository orderSaleRepository) {
         return new OrderSaleSpringJpaAdapter(orderSaleRepository);
+    }
+
+    @Bean
+    public PlanPersistencePort getPlanPersistencePort(PlanRepository planRepository) {
+        return new PlanSpringJpaAdapter(planRepository);
     }
 
 

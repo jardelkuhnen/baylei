@@ -1,7 +1,7 @@
 package br.com.baylei.controller;
 
+import br.com.baylei.api.PlanService;
 import br.com.baylei.dto.PlanDTO;
-import br.com.baylei.service.PlanService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,7 +13,7 @@ import javax.validation.Valid;
 import java.util.List;
 
 @RestController
-@Api(tags = {"Plan service"})
+@Api(tags = {"PlanEntity service"})
 @RequestMapping("/api/plans")
 public class PlanController {
 

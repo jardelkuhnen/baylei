@@ -1,17 +1,8 @@
 package br.com.baylei.config;
 
-import br.com.baylei.adapter.ClientServiceAdapter;
-import br.com.baylei.adapter.OrderSaleServiceAdapter;
-import br.com.baylei.adapter.ProductServiceAdapter;
-import br.com.baylei.adapter.SellerServiceAdapter;
-import br.com.baylei.api.ClientService;
-import br.com.baylei.api.OrderSaleService;
-import br.com.baylei.api.ProductService;
-import br.com.baylei.api.SellerService;
-import br.com.baylei.ports.ClientPersistencePort;
-import br.com.baylei.ports.OrderSalePersistencePort;
-import br.com.baylei.ports.ProductPersistencePort;
-import br.com.baylei.ports.SellerPersistencePort;
+import br.com.baylei.adapter.*;
+import br.com.baylei.api.*;
+import br.com.baylei.ports.*;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -42,5 +33,12 @@ public class ApplicationServicesConfig {
                 sellerPersistencePort,
                 clientPersistencePort,
                 productPersistencePort);
+    }
+
+    @Bean
+    public PlanService getPlanService(PlanPersistencePort planPersistencePort,
+                                      ProductPersistencePort productPersistencePort,
+                                      ClientPersistencePort clientPersistencePort) {
+        return new PlanServiceAdapter(planPersistencePort, productPersistencePort, clientPersistencePort);
     }
 }

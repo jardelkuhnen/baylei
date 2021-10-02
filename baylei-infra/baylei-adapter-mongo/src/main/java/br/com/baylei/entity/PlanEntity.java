@@ -7,14 +7,13 @@ import java.util.List;
 
 @Data
 @Document
-public class Plan extends BaseEntity {
+public class PlanEntity extends BaseEntity {
 
     private String name;
     private Integer ammount;
     private String description;
     private List<String> clientsId;
     private List<String> productIds;
-
 
 
 }
