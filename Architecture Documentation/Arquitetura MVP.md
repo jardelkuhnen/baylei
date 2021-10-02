@@ -13,7 +13,7 @@
 
 Abaixo segue desenho explicativo dos componentes que compõe a aplicação:
 
-![alt text](https://github.com/jardelkuhnen/baylei/blob/master/Documenta%C3%A7%C3%A3o%20Arquitetural/images/Diagrama%20arquitetural%20igti.png?raw=true)
+![alt text](images/components%20diagram.png)
 
  
 ## Frontend
@@ -51,3 +51,4 @@ Como banco de dados será utilizando uma instancia de MongoDb.
 Para este projeto, visando a qualidade inicial bem como a evolução do projeto e de suas dependencias ao longo do tempo, 
 será utilizado a arquitetura hexagonal como padrão da aplicação.
 
+![ScreenShot](images/hexagonal-architecture.png)
