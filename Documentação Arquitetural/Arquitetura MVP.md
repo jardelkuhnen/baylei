@@ -13,7 +13,7 @@
 
 Abaixo segue desenho explicativo dos componentes que compõe a aplicação:
 
-![alt text](https://github.com/jardelkuhnen/baylei/blob/master/Documenta%C3%A7%C3%A3o%20Arquitetural/images/Diagrama%20arquitetural%20igti.png?raw=true)
+![alt text](https://github.com/jardelkuhnen/baylei/blob/master/Documenta%C3%A7%C3%A3o%20Arquitetural/images/Diagrama%20componentes.png)
 
  
 ## Frontend
