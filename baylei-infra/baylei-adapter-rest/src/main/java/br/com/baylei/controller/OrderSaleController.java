@@ -1,7 +1,7 @@
 package br.com.baylei.controller;
 
+import br.com.baylei.api.OrderSaleService;
 import br.com.baylei.dto.OrderSaleDTO;
-import br.com.baylei.service.OrderSaleService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
