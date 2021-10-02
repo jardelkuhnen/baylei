@@ -7,6 +7,7 @@ import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -22,13 +23,13 @@ public class ProductController {
 
     @PostMapping
     @ApiOperation("Save product")
-    public ResponseEntity<ProductDTO> save(@RequestBody ProductDTO productDTO) {
+    public ResponseEntity<ProductDTO> save(@RequestBody @Validated ProductDTO productDTO) {
         return new ResponseEntity<>(productService.save(productDTO), HttpStatus.CREATED);
     }
 
     @PutMapping
     @ApiOperation("Update product")
-    public ResponseEntity<ProductDTO> update(@RequestBody ProductDTO productDTO) {
+    public ResponseEntity<ProductDTO> update(@RequestBody @Validated ProductDTO productDTO) {
         return new ResponseEntity<>(productService.update(productDTO), HttpStatus.OK);
     }
 

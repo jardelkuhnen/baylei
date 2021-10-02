@@ -6,6 +6,7 @@ import io.swagger.annotations.Api;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -19,12 +20,12 @@ public class ClientController {
     private ClientService clientService;
 
     @PostMapping
-    public ResponseEntity<ClientDTO> save(@RequestBody ClientDTO clientDTO) {
+    public ResponseEntity<ClientDTO> save(@RequestBody @Validated ClientDTO clientDTO) {
         return new ResponseEntity<>(clientService.save(clientDTO), HttpStatus.CREATED);
     }
 
     @PutMapping
-    public ResponseEntity<ClientDTO> update(@RequestBody ClientDTO clientDTO) {
+    public ResponseEntity<ClientDTO> update(@RequestBody @Validated ClientDTO clientDTO) {
         return new ResponseEntity<>(clientService.update(clientDTO), HttpStatus.OK);
     }
 
