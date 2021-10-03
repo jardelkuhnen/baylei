@@ -4,9 +4,9 @@
 > Application to help you on day by day on your business of Pet Shop Store!
 
 ### Build/Test 
-`Using circleci to automate build and test workflow` [Circleci Dashboard](https://app.circleci.com/pipelines/github/jardelkuhnen)
+`Using circleci to automate build and test workflow`
 
-[![CircleCI](https://circleci.com/gh/jardelkuhnen/baylei/tree/master.svg?style=svg)](https://circleci.com/gh/jardelkuhnen/baylei/tree/master)
+[![CircleCI](https://img.shields.io/circleci/build/github/jardelkuhnen/baylei/master?style=plastic)](https://circleci.com/gh/jardelkuhnen/baylei/tree/master)
 
 ## Architectural Documentation
 
