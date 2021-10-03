@@ -27,6 +27,17 @@ Run 'baylei-app' to start the app.
 
 ```
 
+## Documentation
+
+```
+Used Swagger to document api.
+
+Beside links to get the api documentation:
+
+ - http://localhost:9092/v2/api-docs
+
+```
+
 ## Run tests
 
 ```sh

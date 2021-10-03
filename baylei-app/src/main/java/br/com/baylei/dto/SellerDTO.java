@@ -1,6 +1,6 @@
 package br.com.baylei.dto;
 
-import br.com.baylei.entity.Seller;
+import br.com.baylei.model.Seller;
 import lombok.Builder;
 import lombok.Data;
 
@@ -35,7 +35,7 @@ public class SellerDTO {
     }
 
     public static Seller ofDto(SellerDTO sellerDTO) {
-        Seller seller = new Seller();
+        var seller = new Seller();
         seller.setId(sellerDTO.getId());
         seller.setName(sellerDTO.getName());
         seller.setLastName(sellerDTO.getLastName());

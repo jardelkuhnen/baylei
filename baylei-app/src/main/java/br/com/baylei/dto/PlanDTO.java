@@ -1,8 +1,8 @@
 package br.com.baylei.dto;
 
-import br.com.baylei.entity.Client;
-import br.com.baylei.entity.Plan;
-import br.com.baylei.entity.Product;
+import br.com.baylei.model.Client;
+import br.com.baylei.model.Plan;
+import br.com.baylei.model.Product;
 import lombok.Builder;
 import lombok.Data;
 
@@ -44,7 +44,7 @@ public class PlanDTO {
     }
 
     public static Plan of(PlanDTO planDTO) {
-        Plan plan = new Plan();
+        var plan = new Plan();
         plan.setName(planDTO.getName());
         plan.setAmmount(planDTO.getAmmount());
         plan.setDescription(planDTO.getDescription());

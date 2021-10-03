@@ -1,6 +1,6 @@
 package br.com.baylei.dto;
 
-import br.com.baylei.entity.Product;
+import br.com.baylei.model.Product;
 import lombok.Builder;
 import lombok.Data;
 
@@ -26,7 +26,7 @@ public class ProductDTO {
 
     public static Product of(ProductDTO productDTO) {
 
-        Product product = new Product();
+        var product = new Product();
         product.setName(productDTO.getName());
         product.setDescription(productDTO.getDescription());
         product.setPrice(productDTO.getPrice());

@@ -1,15 +1,16 @@
 package br.com.baylei.dto;
 
-import br.com.baylei.entity.Client;
-import lombok.Builder;
-import lombok.Data;
+import br.com.baylei.model.Client;
+import lombok.*;
 
 import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotEmpty;
 import java.time.LocalDateTime;
 
-@Data
 @Builder
+@Getter
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
 public class ClientDTO {
 
     private String id;
@@ -38,7 +39,7 @@ public class ClientDTO {
     }
 
     public static Client ofDto(ClientDTO clientDTO) {
-        Client client = new Client();
+        var client = new Client();
         client.setId(clientDTO.getId());
         client.setName(clientDTO.getName());
         client.setLastName(clientDTO.getLastName());
