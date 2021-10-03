@@ -1,9 +1,12 @@
 <h1 align="center">Welcome to Bailey 👋</h1>
-<p>
-  <img alt="Version" src="https://img.shields.io/badge/version-1.0.0-blue.svg?cacheSeconds=2592000" />
-</p>
+
 
 > Application to help you on day by day on your business of Pet Shop Store!
+
+### Build/Test 
+`Using circleci to automate build and test workflow` [Circleci Dashboard](https://app.circleci.com/pipelines/github/jardelkuhnen)
+
+[![CircleCI](https://circleci.com/gh/jardelkuhnen/baylei/tree/master.svg?style=svg)](https://circleci.com/gh/jardelkuhnen/baylei/tree/master)
 
 ## Architectural Documentation
 
