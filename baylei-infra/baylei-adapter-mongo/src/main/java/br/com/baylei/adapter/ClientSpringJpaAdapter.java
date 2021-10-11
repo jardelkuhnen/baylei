@@ -2,8 +2,8 @@ package br.com.baylei.adapter;
 
 import br.com.baylei.entity.ClientEntity;
 import br.com.baylei.model.Client;
-import br.com.baylei.usecase.ClientPersistencePort;
 import br.com.baylei.repository.ClientRepository;
+import br.com.baylei.usecase.ClientPersistencePort;
 import org.springframework.beans.BeanUtils;
 
 import java.util.ArrayList;
