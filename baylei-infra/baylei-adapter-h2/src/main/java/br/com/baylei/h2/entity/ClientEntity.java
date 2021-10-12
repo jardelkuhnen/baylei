@@ -1,7 +1,10 @@
-package br.com.baylei.entity;
+package br.com.baylei.h2.entity;
 
 
-import javax.persistence.*;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
 import java.io.Serializable;
 import java.time.LocalDateTime;
 
@@ -12,8 +15,7 @@ public class ClientEntity implements Serializable {
     private static final long serialVersionUID = 1L;
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private String id;
     @Column
     private LocalDateTime dateCreated;
     @Column
@@ -73,14 +75,6 @@ public class ClientEntity implements Serializable {
         this.email = email;
     }
 
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
     public LocalDateTime getDateCreated() {
         return dateCreated;
     }
@@ -95,5 +89,13 @@ public class ClientEntity implements Serializable {
 
     public void setDateUpdated(LocalDateTime dateUpdated) {
         this.dateUpdated = dateUpdated;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
     }
 }

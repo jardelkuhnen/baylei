@@ -13,7 +13,7 @@ public class BeansConfig {
 
     @Primary
     @Bean(name = "client-persistence-mongo")
-    public ClientPersistencePort getClientPersistencPort(ClientRepository clientRepository) {
+    public ClientPersistencePort getClientPersistencPort(@Qualifier("client-repository-mongo") ClientRepository clientRepository) {
         return new ClientSpringJpaAdapter(clientRepository);
     }
 

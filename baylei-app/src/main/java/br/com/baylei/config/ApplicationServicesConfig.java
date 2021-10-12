@@ -6,11 +6,13 @@ import br.com.baylei.usecase.*;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Primary;
 
 @Configuration
 public class ApplicationServicesConfig {
 
-    @Bean(name = "persistence-mongo")
+    @Primary
+    @Bean(name = "client-service-mongo")
     public ClientService getClientServiceMongo(ClientPersistencePort clientPersistencePort) {
         return new ClientServiceAdapter(clientPersistencePort);
     }
@@ -43,7 +45,7 @@ public class ApplicationServicesConfig {
         return new PlanServiceAdapter(planPersistencePort, productPersistencePort, clientPersistencePort);
     }
 
-    @Bean(name = "persistence-h2")
+    @Bean(name = "client-service-h2")
     public ClientService getClientServiceH2(@Qualifier("client-persistence-h2") ClientPersistencePort clientPersistencePortH2) {
         return new ClientServiceAdapter(clientPersistencePortH2);
     }
