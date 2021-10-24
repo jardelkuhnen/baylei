@@ -21,29 +21,29 @@ import javax.sql.DataSource;
 @EnableAutoConfiguration
 @EnableTransactionManagement
 @EnableJpaRepositories(
-        entityManagerFactoryRef = "h2EntityManagerFactory",
-        transactionManagerRef = "h2TransactionManager",
+//        entityManagerFactoryRef = "h2EntityManagerFactory",
+//        transactionManagerRef = "h2TransactionManager",
         basePackages = {"br.com.baylei.h2"})
 public class H2Config {
 
-    @Bean
-    @ConfigurationProperties(prefix = "spring.h2")
-    public DataSource getDatasource() {
-        return DataSourceBuilder.create().build();
-    }
-
-    @Bean
-    public LocalContainerEntityManagerFactoryBean h2EntityManagerFactory(final EntityManagerFactoryBuilder factoryBuilder) {
-        return factoryBuilder
-                .dataSource(getDatasource())
-                .packages("br.com.baylei.h2")
-                .persistenceUnit("h2PersistenceUnit")
-                .build();
-    }
-
-    @Bean
-    public JpaTransactionManager h2TransactionManager(@Qualifier("h2EntityManagerFactory") final EntityManagerFactory factory) {
-        return new JpaTransactionManager(factory);
-    }
+//    @Bean
+//    @ConfigurationProperties(prefix = "spring.h2")
+//    public DataSource getDatasource() {
+//        return DataSourceBuilder.create().build();
+//    }
+//
+//    @Bean
+//    public LocalContainerEntityManagerFactoryBean h2EntityManagerFactory(final EntityManagerFactoryBuilder factoryBuilder) {
+//        return factoryBuilder
+//                .dataSource(getDatasource())
+//                .packages("br.com.baylei.h2")
+//                .persistenceUnit("h2PersistenceUnit")
+//                .build();
+//    }
+//
+//    @Bean
+//    public JpaTransactionManager h2TransactionManager(@Qualifier("h2EntityManagerFactory") final EntityManagerFactory factory) {
+//        return new JpaTransactionManager(factory);
+//    }
 
 }
