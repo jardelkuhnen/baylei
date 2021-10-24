@@ -1,20 +1,21 @@
-package br.com.baylei.adapter;
+package br.com.baylei.h2.adapter;
 
-import br.com.baylei.entity.ClientEntity;
+import br.com.baylei.h2.entity.ClientEntity;
+import br.com.baylei.h2.repository.ClientRepository;
 import br.com.baylei.model.Client;
-import br.com.baylei.repository.ClientRepository;
 import br.com.baylei.usecase.ClientPersistencePort;
 import org.springframework.beans.BeanUtils;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import java.util.UUID;
 
-public class ClientSpringJpaAdapter implements ClientPersistencePort {
+public class ClientH2JpaAdapter implements ClientPersistencePort {
 
     private final ClientRepository clientRepository;
 
-    public ClientSpringJpaAdapter(ClientRepository clientRepository) {
+    public ClientH2JpaAdapter(ClientRepository clientRepository) {
         this.clientRepository = clientRepository;
     }
 
@@ -22,6 +23,7 @@ public class ClientSpringJpaAdapter implements ClientPersistencePort {
     public Client save(Client client) {
         var clientEntity = new ClientEntity();
         BeanUtils.copyProperties(client, clientEntity);
+        clientEntity.setId(UUID.randomUUID().toString());
         BeanUtils.copyProperties(clientRepository.save(clientEntity), client);
         return client;
     }
@@ -42,10 +44,9 @@ public class ClientSpringJpaAdapter implements ClientPersistencePort {
 
     @Override
     public Client getById(String id) {
-
         Optional<ClientEntity> clientEntityOptional = clientRepository.findById(id);
 
-        if (!clientEntityOptional.isPresent()) {
+        if (clientEntityOptional.isEmpty()) {
             return null;
         }
 
@@ -59,7 +60,7 @@ public class ClientSpringJpaAdapter implements ClientPersistencePort {
     public Client update(Client client) {
         Optional<ClientEntity> clientEntityOptional = clientRepository.findById(client.getId());
 
-        if (!clientEntityOptional.isPresent()) {
+        if (clientEntityOptional.isPresent()) {
             return null;
         }
 
@@ -77,8 +78,8 @@ public class ClientSpringJpaAdapter implements ClientPersistencePort {
 
     @Override
     public List<Client> getAllById(List<String> clientsId) {
-
         List<Client> clients = new ArrayList<>();
+
         clientRepository.findAllById(clientsId).forEach(clientEntity -> {
             var client = new Client();
             BeanUtils.copyProperties(clientEntity, client);

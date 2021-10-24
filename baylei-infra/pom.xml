@@ -18,6 +18,7 @@
     <modules>
         <module>baylei-adapter-mongo</module>
         <module>baylei-adapter-rest</module>
+        <module>baylei-adapter-h2</module>
     </modules>
 
 </project>
