@@ -1,6 +1,6 @@
 # Arquitetura Prevista
 
-##### Para definir a arquitetura do MVP, foram utilizados alguns critérios, sendo eles: 
+##### Para definir a arquitetura, foram utilizados alguns critérios, sendo eles: 
  
  - Qual a quantidade de transações estimadas para a aplicação em um ambiente normal?
 	Está prevista uma transação por segundo.
