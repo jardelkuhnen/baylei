@@ -4,20 +4,29 @@ import br.com.baylei.model.Client;
 import br.com.baylei.model.OrderSale;
 import br.com.baylei.model.Product;
 import br.com.baylei.model.Seller;
+import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.List;
 
 @Data
 @Builder
+@NoArgsConstructor
+@AllArgsConstructor
 public class OrderSaleDTO {
 
     private String id;
+    @NotNull(message = "Client não informado!")
     private ClientDTO client;
+    @NotNull(message = "Vendedor não informado!")
     private SellerDTO seller;
+    @NotEmpty(message = "Produtos não informados!")
     private List<ProductDTO> products;
     private BigDecimal discount;
     private BigDecimal totalOrder;

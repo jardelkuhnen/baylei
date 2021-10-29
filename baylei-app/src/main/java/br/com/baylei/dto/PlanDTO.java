@@ -3,8 +3,10 @@ package br.com.baylei.dto;
 import br.com.baylei.model.Client;
 import br.com.baylei.model.Plan;
 import br.com.baylei.model.Product;
+import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
@@ -14,6 +16,8 @@ import java.util.stream.Collectors;
 
 @Data
 @Builder
+@NoArgsConstructor
+@AllArgsConstructor
 public class PlanDTO {
 
     private String id;

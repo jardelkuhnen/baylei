@@ -18,7 +18,6 @@ import java.util.List;
 public class ClientController {
 
     @Autowired
-    @Qualifier("client-service-h2")
     private ClientService clientService;
 
     @PostMapping
