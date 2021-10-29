@@ -78,14 +78,14 @@ public class OrderSaleServiceAdapter implements OrderSaleService {
         }
 
         var orderSale = OrderSaleDTO.of(orderSaleDTO);
+        orderSale.setClientId(client.getId());
+        orderSale.setSellerId(seller.getId());
 
         BigDecimal totalProducts = sumTotalProducts(productEntities);
 
         orderSale.setProductIds(produtcsId);
         orderSale.setTotalOrder(totalProducts);
         orderSale.setDateCreated(LocalDateTime.now());
-        orderSale.setClientId(orderSale.getClientId());
-        orderSale.setSellerId(orderSale.getSellerId());
         orderSale.setTotalOrderWithDiscount(totalProducts.subtract(orderSaleDTO.getDiscount()));
 
         return OrderSaleDTO.of(orderSalePersistencePort.save(orderSale), productEntities, client, seller);
@@ -104,12 +104,12 @@ public class OrderSaleServiceAdapter implements OrderSaleService {
         orderSale.setSellerId(orderSale.getSellerId());
 
 
-        Client client = clientPersistencePort.getById(orderSaleDTO.getClient().getId());
+        var client = clientPersistencePort.getById(orderSaleDTO.getClient().getId());
         if (Objects.isNull(client)) {
             throw new NotFoundException("Não localizado cliente!");
         }
 
-        Seller seller = sellerPersistencePort.getById(orderSaleDTO.getSeller().getId());
+        var seller = sellerPersistencePort.getById(orderSaleDTO.getSeller().getId());
         if (Objects.isNull(seller)) {
             throw new NotFoundException("Não localizado o vendedor!");
         }

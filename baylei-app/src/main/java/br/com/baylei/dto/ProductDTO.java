@@ -1,10 +1,13 @@
 package br.com.baylei.dto;
 
 import br.com.baylei.model.Product;
+import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.List;
@@ -12,6 +15,8 @@ import java.util.stream.Collectors;
 
 @Data
 @Builder
+@NoArgsConstructor
+@AllArgsConstructor
 public class ProductDTO {
 
     private String id;
@@ -19,7 +24,7 @@ public class ProductDTO {
     private String name;
     @NotBlank(message = "Descrição deve ser informada")
     private String description;
-    @NotBlank(message = "Preço deve ser informado")
+    @NotNull(message = "Preço deve ser informado")
     private BigDecimal price;
     private LocalDateTime dateCreated;
     private LocalDateTime dateUpdated;
