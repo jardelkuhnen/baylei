@@ -43,11 +43,11 @@
             <version>0.0.1-SNAPSHOT</version>
         </dependency>
 
-<!--        <dependency>-->
-<!--            <groupId>br.com.baylei</groupId>-->
-<!--            <artifactId>baylei-adapter-h2</artifactId>-->
-<!--            <version>0.0.1-SNAPSHOT</version>-->
-<!--        </dependency>-->
+        <dependency>
+            <groupId>br.com.baylei</groupId>
+            <artifactId>baylei-adapter-h2</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
+        </dependency>
 
         <dependency>
             <groupId>br.com.baylei</groupId>

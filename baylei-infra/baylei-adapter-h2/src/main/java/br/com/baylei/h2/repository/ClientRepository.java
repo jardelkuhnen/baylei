@@ -5,9 +5,8 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
-@Repository("client-repository-h2")
-//@Transactional("h2TransactionManager")
 @Transactional
+@Repository("client-repository-h2")
 public interface ClientRepository extends JpaRepository<ClientEntity, String> {
 
 
