@@ -26,6 +26,8 @@ public class ProductDTO {
     private String description;
     @NotNull(message = "Preço deve ser informado")
     private BigDecimal price;
+    @NotNull(message = "Quantidade deve ser informada")
+    private Integer quantity;
     private LocalDateTime dateCreated;
     private LocalDateTime dateUpdated;
 
@@ -36,23 +38,21 @@ public class ProductDTO {
         product.setDescription(productDTO.getDescription());
         product.setPrice(productDTO.getPrice());
         product.setId(productDTO.getId());
+        product.setQuantity(productDTO.getQuantity());
 
         return product;
     }
 
     public static ProductDTO of(Product product) {
-        return ProductDTO.builder()
-                .id(product.getId())
-                .name(product.getName())
-                .description(product.getDescription())
-                .price(product.getPrice())
-                .dateCreated(product.getDateCreated())
-                .dateUpdated(product.getDateUpdated())
-                .build();
-    }
-
-    public static List<Product> ofProductsDTO(List<ProductDTO> products) {
-        return products.stream().map(ProductDTO::of).collect(Collectors.toList());
+    return ProductDTO.builder()
+        .id(product.getId())
+        .name(product.getName())
+        .description(product.getDescription())
+        .price(product.getPrice())
+        .quantity(product.getQuantity())
+        .dateCreated(product.getDateCreated())
+        .dateUpdated(product.getDateUpdated())
+        .build();
     }
 
     public static List<ProductDTO> ofProducts(List<Product> products) {

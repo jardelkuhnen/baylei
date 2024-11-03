@@ -33,9 +33,9 @@ public class ProductSpringJpaAdapter implements ProductPersistencePort {
         List<ProductEntity> productEntities = productRepository.findAll();
 
         for (ProductEntity entity : productEntities) {
-            var seller = new Product();
-            BeanUtils.copyProperties(entity, seller);
-            products.add(seller);
+            var p = new Product();
+            BeanUtils.copyProperties(entity, p);
+            products.add(p);
         }
 
         return products;
