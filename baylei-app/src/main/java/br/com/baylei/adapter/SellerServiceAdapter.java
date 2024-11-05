@@ -1,22 +1,20 @@
 package br.com.baylei.adapter;
 
-import br.com.baylei.api.SellerService;
-import br.com.baylei.dto.SellerDTO;
-import br.com.baylei.exception.NotFoundException;
-import br.com.baylei.model.Seller;
-import br.com.baylei.usecase.SellerPersistencePort;
-import org.springframework.beans.factory.annotation.Autowired;
-
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Objects;
 import java.util.stream.Collectors;
 
+import br.com.baylei.api.SellerService;
+import br.com.baylei.dto.SellerDTO;
+import br.com.baylei.exception.NotFoundException;
+import br.com.baylei.model.Seller;
+import br.com.baylei.usecase.SellerPersistencePort;
+
 public class SellerServiceAdapter implements SellerService {
 
     private final SellerPersistencePort sellerPersistencePort;
 
-    @Autowired
     public SellerServiceAdapter(SellerPersistencePort sellerPersistencePort) {
         this.sellerPersistencePort = sellerPersistencePort;
     }

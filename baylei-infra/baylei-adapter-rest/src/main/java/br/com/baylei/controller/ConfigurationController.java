@@ -19,7 +19,7 @@ public class ConfigurationController {
 
     @ApiOperation("Get profile")
     @GetMapping("profile-active")
-    public ResponseEntity getConfiguration() {
+    public ResponseEntity<String[]> getConfiguration() {
         String[] activeProfiles = environment.getActiveProfiles();
         return ResponseEntity.ok(activeProfiles);
     }

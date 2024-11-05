@@ -1,5 +1,10 @@
 package br.com.baylei.adapter;
 
+import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Objects;
+
 import br.com.baylei.api.PlanService;
 import br.com.baylei.dto.PlanDTO;
 import br.com.baylei.exception.NotFoundException;
@@ -9,12 +14,6 @@ import br.com.baylei.model.Product;
 import br.com.baylei.usecase.ClientPersistencePort;
 import br.com.baylei.usecase.PlanPersistencePort;
 import br.com.baylei.usecase.ProductPersistencePort;
-import org.springframework.beans.factory.annotation.Autowired;
-
-import java.time.LocalDateTime;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Objects;
 
 public class PlanServiceAdapter implements PlanService {
 
@@ -22,7 +21,6 @@ public class PlanServiceAdapter implements PlanService {
     private final ProductPersistencePort productPersistencePort;
     private final ClientPersistencePort clientPersistencePort;
 
-    @Autowired
     public PlanServiceAdapter(PlanPersistencePort planPersistencePort,
                               ProductPersistencePort productPersistencePort,
                               ClientPersistencePort clientPersistencePort) {

@@ -1,25 +1,22 @@
 package br.com.baylei.adapter;
 
-import br.com.baylei.api.OrderSaleService;
-import br.com.baylei.dto.OrderSaleDTO;
-import br.com.baylei.dto.ProductDTO;
-import br.com.baylei.exception.NotFoundException;
-import br.com.baylei.model.Client;
-import br.com.baylei.model.OrderSale;
-import br.com.baylei.model.Product;
-import br.com.baylei.model.Seller;
-import br.com.baylei.usecase.ClientPersistencePort;
-import br.com.baylei.usecase.OrderSalePersistencePort;
-import br.com.baylei.usecase.ProductPersistencePort;
-import br.com.baylei.usecase.SellerPersistencePort;
-import org.springframework.beans.factory.annotation.Autowired;
-
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 import java.util.stream.Collectors;
+
+import br.com.baylei.api.OrderSaleService;
+import br.com.baylei.dto.OrderSaleDTO;
+import br.com.baylei.dto.ProductDTO;
+import br.com.baylei.exception.NotFoundException;
+import br.com.baylei.model.OrderSale;
+import br.com.baylei.model.Product;
+import br.com.baylei.usecase.ClientPersistencePort;
+import br.com.baylei.usecase.OrderSalePersistencePort;
+import br.com.baylei.usecase.ProductPersistencePort;
+import br.com.baylei.usecase.SellerPersistencePort;
 
 public class OrderSaleServiceAdapter implements OrderSaleService {
 
@@ -28,7 +25,6 @@ public class OrderSaleServiceAdapter implements OrderSaleService {
     private final ClientPersistencePort clientPersistencePort;
     private final ProductPersistencePort productPersistencePort;
 
-    @Autowired
     public OrderSaleServiceAdapter(OrderSalePersistencePort orderSalePersistencePort,
                                    SellerPersistencePort sellerPersistencePort,
                                    ClientPersistencePort clientPersistencePort,

@@ -1,23 +1,21 @@
 package br.com.baylei.adapter;
 
-import br.com.baylei.api.ProductService;
-import br.com.baylei.dto.ProductDTO;
-import br.com.baylei.exception.NotFoundException;
-import br.com.baylei.model.Product;
-import br.com.baylei.usecase.ProductPersistencePort;
-import org.springframework.beans.factory.annotation.Autowired;
-
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 import java.util.stream.Collectors;
 
+import br.com.baylei.api.ProductService;
+import br.com.baylei.dto.ProductDTO;
+import br.com.baylei.exception.NotFoundException;
+import br.com.baylei.model.Product;
+import br.com.baylei.usecase.ProductPersistencePort;
+
 public class ProductServiceAdapter implements ProductService {
 
     private final ProductPersistencePort productPersistencePort;
 
-    @Autowired
     public ProductServiceAdapter(ProductPersistencePort productPersistencePort) {
         this.productPersistencePort = productPersistencePort;
     }
@@ -41,6 +39,7 @@ public class ProductServiceAdapter implements ProductService {
         product.setPrice(productDTO.getPrice());
         product.setDescription(productDTO.getDescription());
         product.setDateUpdated(LocalDateTime.now());
+        product.setQuantity(productDTO.getQuantity());
 
         return ProductDTO.of(productPersistencePort.save(product));
     }

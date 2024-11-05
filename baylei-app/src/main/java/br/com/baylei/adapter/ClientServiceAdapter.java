@@ -1,23 +1,22 @@
 package br.com.baylei.adapter;
 
-import br.com.baylei.api.ClientService;
-import br.com.baylei.dto.ClientDTO;
-import br.com.baylei.exception.NotFoundException;
-import br.com.baylei.model.Client;
-import br.com.baylei.usecase.ClientPersistencePort;
-import org.springframework.beans.factory.annotation.Autowired;
-
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 import java.util.stream.Collectors;
 
+import br.com.baylei.api.ClientService;
+import br.com.baylei.dto.ClientDTO;
+import br.com.baylei.exception.NotFoundException;
+import br.com.baylei.model.Client;
+import br.com.baylei.usecase.ClientPersistencePort;
+
 public class ClientServiceAdapter implements ClientService {
 
     private final ClientPersistencePort clientPersistencePort;
 
-    @Autowired
+
     public ClientServiceAdapter(ClientPersistencePort clientPersistencePort) {
         this.clientPersistencePort = clientPersistencePort;
     }
